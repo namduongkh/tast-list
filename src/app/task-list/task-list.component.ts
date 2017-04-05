@@ -14,13 +14,13 @@ export class TaskListComponent implements OnInit {
   @Output()
   completeAjaxRequest = new EventEmitter<void>();
 
-  private tasks: String[];
+  public tasks: String[];
 
-  constructor(private taskListService: TaskListService) { }
+  constructor(public taskListService: TaskListService) { }
 
   ngOnInit() { this.loadTasks(); }
 
-  private loadTasks() {
+  public loadTasks() {
     this.startAjaxRequest.emit();
     this.taskListService.loadTasks$().subscribe(
       response => this.tasks = response.json(),
